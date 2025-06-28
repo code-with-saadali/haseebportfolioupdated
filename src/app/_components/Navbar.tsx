@@ -5,7 +5,7 @@ import { motion, AnimatePresence, Variants } from "framer-motion";
 import Link from "next/link";
 
 const navItems = [
-  { name: "About", link: "/" },
+  { name: "About", link: "/about" },
   { name: "Projects", link: "/" },
   { name: "News", link: "/" },
   { name: "Careers", link: "/" },

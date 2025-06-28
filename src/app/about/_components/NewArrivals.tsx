@@ -23,7 +23,7 @@ const NewArrivals = () => {
         className="absolute top-0 left-1/2 -translate-x-1/2 h-full z-0"
       >
         <Image
-          src="https://ik.imagekit.io/msmrd69gi/80QJvYM3h4nosjsXGKDyoxZ2RU.png?updatedAt=1751100339228"
+          src="https://ik.imagekit.io/msmrd69gi/gVDEd8l5Ft3WfkhNLJ67khnX7SI.avif?updatedAt=1751112080631"
           alt="New Arrivals"
           fill
           className="object-cover"
@@ -38,8 +38,8 @@ const NewArrivals = () => {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-[120px] max-lg:text-[60px] max-md:text-[40px] uppercase tracking-tight font-extrabold text-white mb-4">
-            Wear the best
+          <h2 className="text-[80px] max-lg:text-[60px] max-md:text-[40px] uppercase tracking-tight font-extrabold text-white mb-4">
+            JOIN OUR TEAM
           </h2>
           <button className="bg-white text-black px-8 py-3 rounded-full font-semibold uppercase tracking-wider border border-transparent hover:border-white hover:bg-transparent hover:text-white transition-all duration-300 shadow-md hover:shadow-lg">
             Reach out

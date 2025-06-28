@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import Navbar from "./_components/Navbar";
+import Footer from "./_components/Footer";
 
 export const metadata: Metadata = {
   title: "Infinit — Next.js App",
@@ -14,7 +16,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="antialiased bg-white text-[#111]">
+        <Navbar/>
         {children}
+        <Footer/>
       </body>
     </html>
   );
