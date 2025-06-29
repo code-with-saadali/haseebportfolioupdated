@@ -6,9 +6,9 @@ import Link from "next/link";
 
 const navItems = [
   { name: "About", link: "/about" },
-  { name: "Projects", link: "/" },
-  { name: "News", link: "/" },
-  { name: "Careers", link: "/" },
+  { name: "Projects", link: "/projects" },
+  { name: "News", link: "/news" },
+  { name: "Careers", link: "/career" },
 ];
 
 const navItemVariants: Variants = {
@@ -33,7 +33,9 @@ export default function Navbar() {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      setShowNavbar(currentScrollY < lastScrollY.current || currentScrollY < 10);
+      setShowNavbar(
+        currentScrollY < lastScrollY.current || currentScrollY < 10
+      );
       lastScrollY.current = currentScrollY;
       setScrolled(currentScrollY > 10);
     };
@@ -86,20 +88,22 @@ export default function Navbar() {
           ))}
 
           {/* Premium Contact Button */}
-          <motion.button
-            whileHover={{ scale: 1.06 }}
-            transition={{ type: "spring", stiffness: 250, damping: 15 }}
-            className={`relative group overflow-hidden rounded-full px-6 py-2 text-sm font-semibold tracking-wide transition-all duration-300 backdrop-blur-md ${
-              scrolled
-                ? "bg-white text-black shadow-md"
-                : "border border-black text-black"
-            }`}
-          >
-            <span className="absolute inset-0 transform scale-0 group-hover:scale-100 transition-transform duration-500 ease-out bg-black rounded-full" />
-            <span className="relative z-10 group-hover:text-white transition-colors duration-300">
-              Contact
-            </span>
-          </motion.button>
+          <Link href="/contact">
+            <motion.button
+              whileHover={{ scale: 1.06 }}
+              transition={{ type: "spring", stiffness: 250, damping: 15 }}
+              className={`relative group overflow-hidden rounded-full cursor-pointer px-6 py-2 text-sm font-semibold tracking-wide transition-all duration-300 backdrop-blur-md ${
+                scrolled
+                  ? "bg-white text-black shadow-md"
+                  : "border border-black text-black"
+              }`}
+            >
+              <span className="absolute inset-0 transform scale-0 group-hover:scale-100 transition-transform duration-500 ease-out bg-black rounded-full" />
+              <span className="relative z-10 group-hover:text-white transition-colors duration-300">
+                Contact
+              </span>
+            </motion.button>
+          </Link>
         </div>
 
         {/* Mobile Menu Button (Menu/Close) */}
