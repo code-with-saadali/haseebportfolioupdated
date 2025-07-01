@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { FiArrowRight, FiArrowLeft, FiX, FiArrowUpRight } from "react-icons/fi";
+import Link from "next/link";
 
 const projects = [
   {
@@ -191,7 +192,8 @@ export default function FeaturedProjects() {
                       className="p-2 rounded-full hover:bg-gray-100"
                       onClick={() =>
                         setActiveProject(
-                          (activeProject - 1 + projects.length) % projects.length
+                          (activeProject - 1 + projects.length) %
+                            projects.length
                         )
                       }
                     >
@@ -219,7 +221,6 @@ export default function FeaturedProjects() {
         )}
       </AnimatePresence>
 
-      {/* View All Button */}
       <motion.div
         className="text-center mt-16"
         initial={{ opacity: 0, y: 20 }}
@@ -227,10 +228,12 @@ export default function FeaturedProjects() {
         viewport={{ once: true }}
         transition={{ delay: 0.3 }}
       >
-        <button className="px-8 py-3.5 border-2 border-black text-black font-medium rounded-full hover:bg-black hover:text-white transition-all duration-300 flex items-center gap-2 mx-auto">
-          View All Projects
-          <FiArrowRight />
-        </button>
+        <Link href="/projects">
+          <button className="cursor-pointer px-8 py-3.5 border-2 border-black text-black font-medium rounded-full hover:bg-black hover:text-white transition-all duration-300 flex items-center gap-2 mx-auto">
+            View All Projects
+            <FiArrowRight />
+          </button>
+        </Link>
       </motion.div>
     </section>
   );
