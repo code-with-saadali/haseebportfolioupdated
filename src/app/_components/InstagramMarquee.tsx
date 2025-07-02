@@ -18,35 +18,52 @@ const InstagramMarquee = () => {
   const x = useMotionValue(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-  const [speed, setSpeed] = useState(0.5); 
+  const [speed, setSpeed] = useState(0.5);
 
   useAnimationFrame(() => {
-  x.set(x.get() - speed);
-});
+    const container = containerRef.current;
+    if (!container) return;
+
+    const totalWidth = container.scrollWidth / 3; 
+    const currentX = x.get();
+
+    if (Math.abs(currentX) >= totalWidth) {
+      x.set(0); 
+    } else {
+      x.set(currentX - speed); 
+    }
+  });
+
   return (
     <div className="overflow-hidden py-16 bg-gray-50">
       {/* Header */}
       <div className="text-center mb-12">
         <div className="inline-flex items-center justify-center gap-2 mb-3">
           <FiInstagram className="text-2xl text-gray-600" />
-          <p className="text-gray-600 text-sm uppercase tracking-wider">Follow Us</p>
+          <p className="text-gray-600 text-sm uppercase tracking-wider">
+            Follow Us
+          </p>
         </div>
-        <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-indigo-600 to-pink-500 bg-clip-text text-transparent">
+        <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-black/80 to-black/80 bg-clip-text text-transparent">
           @INFINITE_OFFICIAL
         </h1>
         <div className="mt-4 flex justify-center">
-          <div className="w-16 h-1 bg-indigo-500 rounded-full"></div>
+          <div className="w-16 h-1 bg-black rounded-full"></div>
         </div>
       </div>
 
       {/* Marquee */}
-      <div className="relative py-4 cursor-pointer" onMouseEnter={() => setSpeed(0.1)} onMouseLeave={() => setSpeed(0.5)}>
+      <div
+        className="relative py-4 cursor-pointer"
+        onMouseEnter={() => setSpeed(0.5)}
+        onMouseLeave={() => setSpeed(1.3)}
+      >
         <motion.div
           className="flex gap-4 md:gap-6 w-max"
           ref={containerRef}
           style={{ x }}
         >
-          {[...images, ...images].map((src, idx) => (
+          {[...images, ...images, ...images].map((src, idx) => (
             <motion.div
               key={idx}
               className="relative min-w-[240px] md:min-w-[280px] h-[320px] rounded-xl overflow-hidden shadow-lg flex-shrink-0 group"
@@ -94,11 +111,24 @@ const InstagramMarquee = () => {
       </div>
 
       {/* CTA Button */}
-      <div className="text-center mt-12">
-        <button className="px-8 py-3 bg-gradient-to-r from-indigo-600 to-pink-500 text-white rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-          Follow on Instagram
-        </button>
-      </div>
+      <motion.div
+        className="text-center mt-16"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ delay: 0.4 }}
+      >
+        <motion.button
+          whileHover={{ scale: 1.07 }}
+          transition={{ type: "spring", stiffness: 300, damping: 20 }}
+          className="relative group overflow-hidden rounded-full px-7 py-3 text-sm font-semibold tracking-wide backdrop-blur-md bg-black hover:ring-2 hover:ring-black/20 cursor-pointer shadow-md"
+        >
+          <span className="absolute inset-0 scale-0 group-hover:scale-100 transition-transform duration-500 ease-in-out bg-gradient-to-r from-white to-gray-100 rounded-full" />
+          <span className="relative z-10 text-white group-hover:text-black transition-colors duration-300">
+            Follow on Instagram
+          </span>
+        </motion.button>
+      </motion.div>
     </div>
   );
 };

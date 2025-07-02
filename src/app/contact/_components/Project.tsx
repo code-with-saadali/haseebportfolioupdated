@@ -1,5 +1,7 @@
+"use client";
 import Image from "next/image";
 import React from "react";
+import { motion } from "framer-motion";
 
 const Project = () => {
   return (
@@ -21,9 +23,23 @@ const Project = () => {
               A dynamic space where imagination knows no bounds and
               experimentation is celebrated.
             </p>
-            <button className="bg-white text-black px-5 py-2 rounded-full font-medium hover:bg-gray-100 transition duration-300">
-              About Us
-            </button>
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ delay: 0.4 }}
+            >
+              <motion.button
+                whileHover={{ scale: 1.07 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                className="relative group overflow-hidden rounded-full px-7 py-3 text-sm tracking-wide backdrop-blur-md bg-white hover:ring-2 hover:ring-black/20 cursor-pointer shadow-md"
+              >
+                <span className="absolute inset-0 scale-0 group-hover:scale-100 transition-transform duration-500 ease-in-out bg-gradient-to-r from-black to-black rounded-full" />
+                <span className="relative z-10 text-black group-hover:text-white transition-colors duration-300">
+                  About Us
+                </span>
+              </motion.button>
+            </motion.div>
           </div>
         </div>
 
@@ -43,9 +59,23 @@ const Project = () => {
               A dynamic space where imagination knows no bounds and
               experimentation is celebrated.
             </p>
-            <button className="bg-white text-black px-5 py-2 rounded-full font-medium hover:bg-gray-100 transition duration-300">
-              About Us
-            </button>
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ delay: 0.4 }}
+            >
+              <motion.button
+                whileHover={{ scale: 1.07 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                className="relative group overflow-hidden rounded-full px-7 py-3 text-sm tracking-wide backdrop-blur-md bg-white hover:ring-2 hover:ring-black/20 cursor-pointer shadow-md"
+              >
+                <span className="absolute inset-0 scale-0 group-hover:scale-100 transition-transform duration-500 ease-in-out bg-gradient-to-r from-black to-black rounded-full" />
+                <span className="relative z-10 text-black group-hover:text-white transition-colors duration-300">
+                  About Us
+                </span>
+              </motion.button>
+            </motion.div>
           </div>
         </div>
       </div>

@@ -223,16 +223,22 @@ export default function FeaturedProjects() {
 
       <motion.div
         className="text-center mt-16"
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.3 }}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ delay: 0.4 }}
       >
         <Link href="/projects">
-          <button className="cursor-pointer px-8 py-3.5 border-2 border-black text-black font-medium rounded-full hover:bg-black hover:text-white transition-all duration-300 flex items-center gap-2 mx-auto">
-            View All Projects
-            <FiArrowRight />
-          </button>
+          <motion.button
+            whileHover={{ scale: 1.07 }}
+            transition={{ type: "spring", stiffness: 300, damping: 20 }}
+            className="relative group overflow-hidden rounded-full px-7 py-3 text-[16px] font-semibold tracking-wide backdrop-blur-md bg-black hover:ring-2 hover:ring-black/20 cursor-pointer shadow-md"
+          >
+            <span className="absolute inset-0 scale-0 group-hover:scale-100 transition-transform duration-500 ease-in-out bg-gradient-to-r from-white to-gray-100 rounded-full" />
+            <span className="relative z-10 text-white flex items-center gap-2 group-hover:text-black transition-colors duration-300">
+              View All Projects <FiArrowRight />
+            </span>
+          </motion.button>
         </Link>
       </motion.div>
     </section>

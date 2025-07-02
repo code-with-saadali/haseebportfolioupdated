@@ -35,8 +35,8 @@ export default function ContactSection() {
       {/* Top Text */}
       <div className="px-5 lg:px-10 pt-16 pb-10">
         <p className="uppercase text-sm text-gray-400">Get in touch</p>
-        <h2 className="text-3xl md:text-5xl font-bold mt-2">
-          LET’S START THE CONVERSATION.
+        <h2 className="text-3xl md:text-5xl font-bold mt-2 leading-tight">
+          LET’S START THE <br /> CONVERSATION.
         </h2>
       </div>
 

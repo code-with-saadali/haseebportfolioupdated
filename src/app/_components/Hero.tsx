@@ -1,18 +1,19 @@
-'use client';
+"use client";
 
-import React, { useEffect, useRef, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useEffect, useRef, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const videoSources = [
-  'https://ik.imagekit.io/msmrd69gi/857195-hd_1280_720_25fps.mp4?updatedAt=1750944425157',
-  'https://ik.imagekit.io/msmrd69gi/854122-hd_1920_1080_25fps.mp4?updatedAt=1750945057698',
-  'https://ik.imagekit.io/msmrd69gi/854345-hd_1280_720_30fps.mp4?updatedAt=1750945279720',
+  "https://ik.imagekit.io/msmrd69gi/857195-hd_1280_720_25fps.mp4?updatedAt=1750944425157",
+  "https://ik.imagekit.io/msmrd69gi/854122-hd_1920_1080_25fps.mp4?updatedAt=1750945057698",
+  "https://ik.imagekit.io/msmrd69gi/854345-hd_1280_720_30fps.mp4?updatedAt=1750945279720",
 ];
 
 const contentData = [
   {
     heading: "Fashion That Stands the Test of Time",
-    subheading: "We bring fashion that transcends time, blending style with purpose.",
+    subheading:
+      "We bring fashion that transcends time, blending style with purpose.",
     buttonText: "Explore Timeless",
   },
   {
@@ -22,7 +23,8 @@ const contentData = [
   },
   {
     heading: "Elegance in Every Step",
-    subheading: "Experience luxury and grace in motion with our latest collection.",
+    subheading:
+      "Experience luxury and grace in motion with our latest collection.",
     buttonText: "View Collection",
   },
 ];
@@ -43,9 +45,9 @@ export default function Hero() {
       setCurrentVideoIndex((prev) => (prev + 1) % videoSources.length);
     };
 
-    video.addEventListener('ended', handleEnded);
+    video.addEventListener("ended", handleEnded);
     return () => {
-      video.removeEventListener('ended', handleEnded);
+      video.removeEventListener("ended", handleEnded);
     };
   }, [currentVideoIndex]);
 
@@ -77,7 +79,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -30 }}
-            transition={{ duration: 0.8, ease: 'easeInOut' }}
+            transition={{ duration: 0.8, ease: "easeInOut" }}
             className="flex flex-col md:flex-row justify-between items-end gap-10"
           >
             {/* Left Text Block */}
@@ -95,14 +97,23 @@ export default function Hero() {
               <p className="text-white/80 font-light text-lg leading-relaxed drop-shadow-md">
                 {currentContent.subheading}
               </p>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.98 }}
-                transition={{ type: "spring", stiffness: 200 }}
-                className="bg-white text-black text-lg font-semibold px-6 py-3 rounded-full hover:bg-black hover:text-white transition-all duration-300 shadow-lg"
+              <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ delay: 0.4 }}
               >
-                {currentContent.buttonText}
-              </motion.button>
+                <motion.button
+                  whileHover={{ scale: 1.07 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                  className="relative group overflow-hidden rounded-full px-7 py-3 text-[16px] font-semibold tracking-wide backdrop-blur-md bg-white hover:ring-2 hover:ring-black/20 cursor-pointer shadow-md"
+                >
+                  <span className="absolute inset-0 scale-0 group-hover:scale-100 transition-transform duration-500 ease-in-out bg-gradient-to-r from-black to-black rounded-full" />
+                  <span className="relative z-10 text-black group-hover:text-white transition-colors duration-300">
+                    {currentContent.buttonText}
+                  </span>
+                </motion.button>
+              </motion.div>
             </div>
           </motion.div>
         </AnimatePresence>
@@ -114,7 +125,7 @@ export default function Hero() {
               key={i}
               animate={{
                 scale: i === currentVideoIndex ? 1.2 : 1,
-                backgroundColor: i === currentVideoIndex ? '#fff' : '#ffffff33',
+                backgroundColor: i === currentVideoIndex ? "#fff" : "#ffffff33",
               }}
               transition={{ duration: 0.3 }}
               className="w-3 h-3 rounded-full border border-white"

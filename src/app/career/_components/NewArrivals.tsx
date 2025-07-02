@@ -3,6 +3,7 @@
 import Image from "next/image";
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import Link from "next/link";
 
 const NewArrivals = () => {
   const ref = useRef(null);
@@ -41,9 +42,11 @@ const NewArrivals = () => {
           <h2 className="text-[80px] max-lg:text-[60px] max-md:text-[40px] uppercase tracking-tight font-extrabold text-white mb-4">
             Wear the best
           </h2>
-          <button className="bg-white text-black px-8 py-3 rounded-full font-semibold uppercase tracking-wider border border-transparent hover:border-white hover:bg-transparent hover:text-white transition-all duration-300 shadow-md hover:shadow-lg">
-            Reach out
-          </button>
+          <Link href="/contact">
+            <button className="bg-white text-black cursor-pointer px-8 py-3 rounded-full font-semibold uppercase tracking-wider border border-transparent hover:border-white hover:bg-transparent hover:text-white transition-all duration-300 shadow-md hover:shadow-lg">
+              Reach out
+            </button>
+          </Link>
         </motion.div>
       </div>
     </section>
